@@ -1,9 +1,4 @@
-import {
-    type LucideIcon, Scale, FileText, Gavel, Search, MessageCircle, // Novo
-    User,          // Novo
-    Briefcase,     // Novo
-    Mail
-} from "lucide-react";
+import {Briefcase, type LucideIcon, Mail, MessageCircle, User} from "lucide-react";
 
 export type SolutionType = 'web' | 'mobile';
 
@@ -23,44 +18,6 @@ export interface SolutionItem {
 export const solutionsList: SolutionItem[] = [
     {
         id: "1",
-        title: "Consulta Processual Unificada",
-        description: "Busca centralizada de processos em todas as instâncias do TJBA.",
-        url: "#",
-        category: "Processual",
-        type: "web",
-        icon: Search,
-    },
-    {
-        id: "2",
-        title: "PJe Helper",
-        description: "Ferramenta auxiliar para automação de tarefas repetitivas no PJe.",
-        url: "#",
-        category: "Produtividade",
-        type: "web",
-        icon: Gavel,
-    },
-    {
-        id: "4",
-        title: "Jurisprudência TJBA",
-        description: "Base de dados completa de acórdãos e decisões monocráticas.",
-        url: "#",
-        category: "Jurídico",
-        type: "mobile",
-        icon: Scale,
-        version: "1.0.0",
-        size: "84.3Mb",
-    },
-    {
-        id: "3",
-        title: "Diário da Justiça Eletrônico",
-        description: "Acesso rápido às publicações e editais recentes.",
-        url: "#",
-        category: "Consultas",
-        type: "web",
-        icon: FileText,
-    },
-    {
-        id: "5",
         title: "Queixa Cidadã",
         description: "Assistente virtual para registro de queixas e denúncias nos Juizados Especiais.",
         url: "#", // Aqui iria o link do APK
@@ -71,7 +28,7 @@ export const solutionsList: SolutionItem[] = [
         size: "35MB"
     },
     {
-        id: "6",
+        id: "2",
         title: "TJBA Cidadão",
         description: "Acesso rápido a serviços essenciais, certidões e pautas de audiência.",
         url: "#",
@@ -82,7 +39,7 @@ export const solutionsList: SolutionItem[] = [
         size: "42MB"
     },
     {
-        id: "7",
+        id: "3",
         title: "TJBA Servidor",
         description: "Portal do servidor: contracheque, frequência e funcionalidades administrativas.",
         url: "#",
@@ -93,7 +50,7 @@ export const solutionsList: SolutionItem[] = [
         size: "58MB"
     },
     {
-        id: "8",
+        id: "4",
         title: "TJBA Intimações",
         description: "Recebimento e gestão de intimações e citações eletrônicas com segurança.",
         url: "#",
@@ -103,4 +60,13 @@ export const solutionsList: SolutionItem[] = [
         version: "1.0.8",
         size: "28MB"
     },
+    {
+        id: "5",
+        title: "Inclua o TJzEla",
+        description: "Cadastro de medidas protetivas de urgência",
+        url: "#",
+        category: "Cidadania",
+        type: "mobile",
+        image: "/icons/TJZELA.png",
+    }
 ];
