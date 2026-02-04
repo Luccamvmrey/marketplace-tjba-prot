@@ -45,8 +45,8 @@ export function SolutionCard({ solution }: SolutionCardProps) {
 
                 {isMobile && (
                     <div className="mt-auto flex items-center gap-4 text-xs text-muted-foreground border-t pt-4">
-                        <span>Versão: {solution.version}</span>
-                        <span>Tamanho: {solution.size}</span>
+                        {solution.version && <span>Versão: {solution.version}</span>}
+                        {solution.size && <span>Tamanho: {solution.size}</span>}
                     </div>
                 )}
             </CardContent>
