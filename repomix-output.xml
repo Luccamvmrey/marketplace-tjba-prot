@@ -1,0 +1,1538 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: */dist/, /node_modules/, /generate/, /.vite/*
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+components.json
+eslint.config.js
+index.html
+package.json
+public/logo-tjba.png
+public/vite.svg
+README.md
+src/App.tsx
+src/components/marketplace/Header.tsx
+src/components/marketplace/InstallGuideModal.tsx
+src/components/marketplace/SearchHero.tsx
+src/components/marketplace/SolutionCard.tsx
+src/components/marketplace/SolutionsGrid.tsx
+src/components/ui/badge.tsx
+src/components/ui/button.tsx
+src/components/ui/card.tsx
+src/components/ui/dialog.tsx
+src/components/ui/input.tsx
+src/config/solutions.ts
+src/index.css
+src/lib/utils.ts
+src/main.tsx
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="components.json">
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
+}
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+  },
+])
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>marketplace</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "marketplace",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.563.0",
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.2.5"
+  }
+}
+</file>
+
+<file path="public/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+</file>
+
+<file path="README.md">
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.marketplace.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.marketplace.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+</file>
+
+<file path="src/App.tsx">
+import {useMemo, useState} from "react";
+import Header from "@/components/marketplace/Header";
+import {SearchHero} from "@/components/marketplace/SearchHero";
+import {SolutionsGrid} from "@/components/marketplace/SolutionsGrid";
+import {solutionsList, type SolutionType} from "@/config/solutions";
+import {Button} from "@/components/ui/button";
+import {Globe, LayoutGrid, Smartphone} from "lucide-react";
+
+type FilterType = 'all' | SolutionType;
+
+function App() {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+
+    const filteredSolutions = useMemo(() => {
+        let result = solutionsList;
+
+        if (activeFilter !== 'all') {
+            result = result.filter((app) => app.type === activeFilter);
+        }
+
+        if (searchQuery) {
+            const lowerQuery = searchQuery.toLowerCase();
+            result = result.filter(
+                (app) =>
+                    app.title.toLowerCase().includes(lowerQuery) ||
+                    app.description.toLowerCase().includes(lowerQuery) ||
+                    app.category.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        return result;
+    }, [searchQuery, activeFilter]);
+
+    return (
+        <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <Header/>
+
+            <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8 space-y-8">
+                <SearchHero
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                />
+
+                <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                    <Button
+                        variant={activeFilter === 'all' ? "default" : "outline"}
+                        onClick={() => setActiveFilter('all')}
+                        className="rounded-full px-6 h-9 transition-all"
+                    >
+                        <LayoutGrid className="mr-2 h-4 w-4"/>
+                        Todos
+                    </Button>
+                    <Button
+                        variant={activeFilter === 'web' ? "default" : "outline"}
+                        onClick={() => setActiveFilter('web')}
+                        className="rounded-full px-6 h-9 transition-all"
+                    >
+                        <Globe className="mr-2 h-4 w-4"/>
+                        Sistemas Web
+                    </Button>
+                    <Button
+                        variant={activeFilter === 'mobile' ? "default" : "outline"}
+                        onClick={() => setActiveFilter('mobile')}
+                        className="rounded-full px-6 h-9 transition-all"
+                    >
+                        <Smartphone className="mr-2 h-4 w-4"/>
+                        Apps Android
+                    </Button>
+                </div>
+
+                <SolutionsGrid
+                    solutions={filteredSolutions}
+                    searchQuery={searchQuery}
+                    onClearSearch={() => {
+                        setSearchQuery("");
+                        setActiveFilter("all");
+                    }}
+                />
+            </main>
+        </div>
+    );
+}
+
+export default App;
+</file>
+
+<file path="src/components/marketplace/Header.tsx">
+import { LayoutGrid } from "lucide-react";
+
+function Header() {
+    return (
+        <div className="sticky top-0 z-50 flex flex-col w-full">
+            {/* Faixa decorativa superior estilo Gov */}
+            <div className="w-full h-1.5 bg-linear-to-r from-secondary via-primary to-secondary" />
+
+            <header className="w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shadow-sm">
+                <div className="max-w-7xl mx-auto px-4 flex h-20 items-center justify-between">
+
+                    <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center">
+                            <img
+                                src="/logo-tjba.png"
+                                alt="Logo TJBA"
+                                className="h-12 w-auto object-contain"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                                }}
+                            />
+                            <LayoutGrid className="h-10 w-10 text-primary hidden" />
+                        </div>
+
+                        <div className="h-10 w-[1px] bg-border/60 mx-1" />
+
+                        <div className="flex flex-col justify-center">
+                            <span className="font-bold text-xl leading-none tracking-tight text-foreground mb-1">
+                                Marketplace
+                            </span>
+                            <span className="text-sm font-medium text-muted-foreground leading-none">
+                                Tribunal de Justiça da Bahia
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        {/* Placeholder para itens futuros */}
+                    </div>
+                </div>
+            </header>
+        </div>
+    );
+}
+
+export default Header;
+</file>
+
+<file path="src/components/marketplace/InstallGuideModal.tsx">
+import {AlertTriangle, FileDown, ShieldCheck, Smartphone} from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import type {SolutionItem} from "@/config/solutions";
+import * as React from "react";
+
+interface InstallGuideModalProps {
+    solution: SolutionItem;
+    trigger: React.ReactNode; // O botão que abre o modal
+}
+
+export function InstallGuideModal({solution, trigger}: InstallGuideModalProps) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                {trigger}
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-150">
+                <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2 text-xl">
+                        <Smartphone className="h-5 w-5 text-primary"/>
+                        Instalação do {solution.title}
+                    </DialogTitle>
+                    <DialogDescription>
+                        Como este é um aplicativo interno, você precisará autorizar a instalação manualmente.
+                    </DialogDescription>
+                </DialogHeader>
+
+                <div className="grid gap-6 py-4">
+                    {/* Passo 1 */}
+                    <div className="flex gap-4 items-start">
+                        <div
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold border border-blue-200">
+                            1
+                        </div>
+                        <div className="space-y-1">
+                            <h4 className="font-medium leading-none">Baixe o Arquivo</h4>
+                            <p className="text-sm text-muted-foreground">
+                                Clique no botão de download abaixo. O arquivo
+                                <span className="font-mono text-xs bg-muted px-1 py-0.5 rounded mx-1">.apk</span>
+                                será salvo no seu dispositivo.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Passo 2 */}
+                    <div className="flex gap-4 items-start">
+                        <div
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 font-bold border border-amber-200">
+                            2
+                        </div>
+                        <div className="space-y-1">
+                            <h4 className="font-medium leading-none">Permitir Fonte Desconhecida</h4>
+                            <p className="text-sm text-muted-foreground">
+                                Ao abrir o arquivo, o Android pode bloquear a instalação. Clique em
+                                <strong> Configurações</strong> e ative <strong>"Permitir desta fonte"</strong>.
+                            </p>
+                            <div
+                                className="mt-2 flex items-center gap-2 text-xs text-amber-600 bg-amber-50 p-2 rounded border border-amber-100">
+                                <AlertTriangle className="h-4 w-4"/>
+                                <span>Isso é normal para apps corporativos fora da Play Store.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Passo 3 */}
+                    <div className="flex gap-4 items-start">
+                        <div
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700 font-bold border border-green-200">
+                            3
+                        </div>
+                        <div className="space-y-1">
+                            <h4 className="font-medium leading-none">Concluir Instalação</h4>
+                            <p className="text-sm text-muted-foreground">
+                                Volte e clique em <strong>Instalar</strong>. O app estará pronto para uso.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <DialogFooter className="sm:justify-between items-center border-t pt-4">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <ShieldCheck className="h-4 w-4 text-green-600"/>
+                        Aplicativo verificado pelo TJBA
+                    </div>
+                    <Button className="w-full sm:w-auto font-bold bg-primary hover:bg-primary/90" asChild>
+                        <a href={solution.url} download>
+                            <FileDown className="mr-2 h-4 w-4"/>
+                            Baixar APK {solution.version && `(v${solution.version})`}
+                        </a>
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    );
+}
+</file>
+
+<file path="src/components/marketplace/SearchHero.tsx">
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+
+interface SearchHeroProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+export function SearchHero({ value, onChange }: SearchHeroProps) {
+    return (
+        <section className="relative overflow-hidden rounded-xl bg-linear-to-r from-secondary to-[#2c5282] text-white p-8 md:p-12 shadow-lg mt-8">
+
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[16px_16px]"></div>
+
+            <div className="relative z-10 flex flex-col items-center text-center space-y-6">
+                <div className="space-y-2">
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                        Catálogo de Soluções
+                    </h2>
+                    <p className="text-blue-100 max-w-2xl mx-auto text-lg">
+                        Encontre aplicativos, sistemas e ferramentas internas do TJBA.
+                    </p>
+                </div>
+
+                <div className="w-full max-w-xl relative flex items-center gap-2">
+                    <div className="relative flex-1">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input
+                            type="search"
+                            placeholder="O que você procura?"
+                            className="pl-10 h-14 text-lg bg-white text-foreground border-0 shadow-inner focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+                            value={value}
+                            onChange={(e) => onChange(e.target.value)}
+                        />
+                    </div>
+                    <button className="h-14 px-8 bg-destructive hover:bg-destructive/90 text-white font-bold rounded-md shadow-md transition-colors hidden sm:block cursor-pointer">
+                        BUSCAR
+                    </button>
+                </div>
+            </div>
+        </section>
+    );
+}
+</file>
+
+<file path="src/components/marketplace/SolutionCard.tsx">
+import {ExternalLink, Smartphone} from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {Badge} from "@/components/ui/badge";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card";
+import type {SolutionItem} from "@/config/solutions";
+import {InstallGuideModal} from "./InstallGuideModal";
+
+interface SolutionCardProps {
+    solution: SolutionItem;
+}
+
+export function SolutionCard({solution}: SolutionCardProps) {
+    const {icon: Icon, image} = solution;
+    const isMobile = solution.type === 'mobile';
+
+    const ActionButton = (
+        <Button
+            className="w-full font-semibold shadow-sm cursor-pointer"
+            variant="secondary"
+        >
+            {isMobile ? (
+                <>
+                    Baixar Aplicativo
+                    <Smartphone className="ml-2 h-4 w-4"/>
+                </>
+            ) : (
+                <>
+                    Acessar Sistema
+                    <ExternalLink className="ml-2 h-4 w-4"/>
+                </>
+            )}
+        </Button>
+    );
+
+    return (
+        <Card
+            className="flex flex-col h-full border-t-4 border-t-primary shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+            <CardHeader>
+                <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-4">
+
+                        <div
+                            className="p-3 bg-secondary rounded-lg text-white shadow-sm group-hover:bg-primary transition-colors flex items-center justify-center h-12 w-12 shrink-0 overflow-hidden">
+                            {image ? (
+                                <img
+                                    src={image}
+                                    alt=""
+                                    className="h-full w-full object-contain"
+                                />
+                            ) : Icon ? (
+                                <Icon className="h-6 w-6"/>
+                            ) : null}
+                        </div>
+
+                        <div className="space-y-1">
+                            <CardTitle className="text-lg font-bold text-slate-800 line-clamp-1">
+                                {solution.title}
+                            </CardTitle>
+                            <div className="flex gap-2">
+                                <Badge variant="outline"
+                                       className="text-xs font-normal bg-blue-50 text-blue-700 border-blue-200">
+                                    {solution.category}
+                                </Badge>
+                                {isMobile && (
+                                    <Badge variant="secondary"
+                                           className="text-xs bg-green-100 text-green-800 hover:bg-green-200">
+                                        Android
+                                    </Badge>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </CardHeader>
+
+            <CardContent className="flex-1 flex flex-col">
+                <CardDescription className="text-sm leading-relaxed text-slate-600 line-clamp-3">
+                    {solution.description}
+                </CardDescription>
+
+                {isMobile && (
+                    <div className="mt-auto flex items-center gap-4 text-xs text-muted-foreground border-t pt-4">
+                        <span>Versão: {solution.version}</span>
+                        <span>Tamanho: {solution.size}</span>
+                    </div>
+                )}
+            </CardContent>
+
+            <CardFooter className="pt-2">
+                {isMobile ? (
+                    <InstallGuideModal solution={solution} trigger={ActionButton}/>
+                ) : (
+                    <Button asChild className="w-full font-semibold shadow-sm" variant="secondary">
+                        <a href={solution.url} target="_blank" rel="noopener noreferrer">
+                            Acessar Sistema
+                            <ExternalLink className="ml-2 h-4 w-4"/>
+                        </a>
+                    </Button>
+                )}
+            </CardFooter>
+        </Card>
+    );
+}
+</file>
+
+<file path="src/components/marketplace/SolutionsGrid.tsx">
+import type {SolutionItem} from "@/config/solutions";
+import {SolutionCard} from "./SolutionCard";
+import {Button} from "@/components/ui/button";
+
+interface SolutionsGridProps {
+    solutions: SolutionItem[];
+    searchQuery: string;
+    onClearSearch: () => void;
+}
+
+export function SolutionsGrid({solutions, searchQuery, onClearSearch}: SolutionsGridProps) {
+    if (solutions.length === 0) {
+        return (
+            <div className="text-center py-20 border border-dashed rounded-lg bg-muted/10">
+                <p className="text-muted-foreground">
+                    Nenhuma solução encontrada para "<span className="font-medium text-foreground">{searchQuery}</span>".
+                </p>
+                <Button
+                    variant="link"
+                    onClick={onClearSearch}
+                    className="mt-2"
+                >
+                    Limpar filtros
+                </Button>
+            </div>
+        );
+    }
+
+    return (
+        <div className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-muted-foreground">
+                    Disponíveis <span className="text-foreground ml-1">({solutions.length})</span>
+                </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {solutions.map((solution) => (
+                    <SolutionCard key={solution.id} solution={solution}/>
+                ))}
+            </div>
+        </div>
+    );
+}
+</file>
+
+<file path="src/components/ui/badge.tsx">
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
+
+import { cn } from "@/lib/utils"
+
+const badgeVariants = cva(
+  "inline-flex items-center justify-center rounded-full border border-transparent px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        secondary:
+          "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        destructive:
+          "bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 [a&]:hover:underline",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Badge({
+  className,
+  variant = "default",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot.Root : "span"
+
+  return (
+    <Comp
+      data-slot="badge"
+      data-variant={variant}
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
+}
+
+export { Badge, badgeVariants }
+</file>
+
+<file path="src/components/ui/button.tsx">
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9",
+        "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm": "size-8",
+        "icon-lg": "size-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot.Root : "button"
+
+  return (
+    <Comp
+      data-slot="button"
+      data-variant={variant}
+      data-size={size}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+}
+
+export { Button, buttonVariants }
+</file>
+
+<file path="src/components/ui/card.tsx">
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
+      {...props}
+    />
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
+}
+</file>
+
+<file path="src/components/ui/dialog.tsx">
+import * as React from "react"
+import { XIcon } from "lucide-react"
+import { Dialog as DialogPrimitive } from "radix-ui"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+
+function Dialog({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Root>) {
+  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+}
+
+function DialogTrigger({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
+  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
+}
+
+function DialogPortal({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Portal>) {
+  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
+}
+
+function DialogClose({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Close>) {
+  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
+}
+
+function DialogOverlay({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+  return (
+    <DialogPrimitive.Overlay
+      data-slot="dialog-overlay"
+      className={cn(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function DialogContent({
+  className,
+  children,
+  showCloseButton = true,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Content> & {
+  showCloseButton?: boolean
+}) {
+  return (
+    <DialogPortal data-slot="dialog-portal">
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        data-slot="dialog-content"
+        className={cn(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none sm:max-w-lg",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        {showCloseButton && (
+          <DialogPrimitive.Close
+            data-slot="dialog-close"
+            className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          >
+            <XIcon />
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
+        )}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  )
+}
+
+function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="dialog-header"
+      className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+      {...props}
+    />
+  )
+}
+
+function DialogFooter({
+  className,
+  showCloseButton = false,
+  children,
+  ...props
+}: React.ComponentProps<"div"> & {
+  showCloseButton?: boolean
+}) {
+  return (
+    <div
+      data-slot="dialog-footer"
+      className={cn(
+        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      {showCloseButton && (
+        <DialogPrimitive.Close asChild>
+          <Button variant="outline">Close</Button>
+        </DialogPrimitive.Close>
+      )}
+    </div>
+  )
+}
+
+function DialogTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+  return (
+    <DialogPrimitive.Title
+      data-slot="dialog-title"
+      className={cn("text-lg leading-none font-semibold", className)}
+      {...props}
+    />
+  )
+}
+
+function DialogDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Description>) {
+  return (
+    <DialogPrimitive.Description
+      data-slot="dialog-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+}
+</file>
+
+<file path="src/components/ui/input.tsx">
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
+    <input
+      type={type}
+      data-slot="input"
+      className={cn(
+        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Input }
+</file>
+
+<file path="src/config/solutions.ts">
+import {
+    type LucideIcon, Scale, FileText, Gavel, Search, MessageCircle, // Novo
+    User,          // Novo
+    Briefcase,     // Novo
+    Mail
+} from "lucide-react";
+
+export type SolutionType = 'web' | 'mobile';
+
+export interface SolutionItem {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    category: string;
+    type: SolutionType;
+    icon?: LucideIcon;
+    image?: string;
+    version?: string;
+    size?: string;
+}
+
+export const solutionsList: SolutionItem[] = [
+    {
+        id: "1",
+        title: "Consulta Processual Unificada",
+        description: "Busca centralizada de processos em todas as instâncias do TJBA.",
+        url: "#",
+        category: "Processual",
+        type: "web",
+        icon: Search,
+    },
+    {
+        id: "2",
+        title: "PJe Helper",
+        description: "Ferramenta auxiliar para automação de tarefas repetitivas no PJe.",
+        url: "#",
+        category: "Produtividade",
+        type: "web",
+        icon: Gavel,
+    },
+    {
+        id: "4",
+        title: "Jurisprudência TJBA",
+        description: "Base de dados completa de acórdãos e decisões monocráticas.",
+        url: "#",
+        category: "Jurídico",
+        type: "mobile",
+        icon: Scale,
+        version: "1.0.0",
+        size: "84.3Mb",
+    },
+    {
+        id: "3",
+        title: "Diário da Justiça Eletrônico",
+        description: "Acesso rápido às publicações e editais recentes.",
+        url: "#",
+        category: "Consultas",
+        type: "web",
+        icon: FileText,
+    },
+    {
+        id: "5",
+        title: "Queixa Cidadã",
+        description: "Assistente virtual para registro de queixas e denúncias nos Juizados Especiais.",
+        url: "#", // Aqui iria o link do APK
+        category: "Atendimento",
+        type: "mobile",
+        icon: MessageCircle,
+        version: "2.1.0",
+        size: "35MB"
+    },
+    {
+        id: "6",
+        title: "TJBA Cidadão",
+        description: "Acesso rápido a serviços essenciais, certidões e pautas de audiência.",
+        url: "#",
+        category: "Cidadania",
+        type: "mobile",
+        icon: User,
+        version: "1.4.5",
+        size: "42MB"
+    },
+    {
+        id: "7",
+        title: "TJBA Servidor",
+        description: "Portal do servidor: contracheque, frequência e funcionalidades administrativas.",
+        url: "#",
+        category: "Administrativo",
+        type: "mobile",
+        icon: Briefcase,
+        version: "3.0.2",
+        size: "58MB"
+    },
+    {
+        id: "8",
+        title: "TJBA Intimações",
+        description: "Recebimento e gestão de intimações e citações eletrônicas com segurança.",
+        url: "#",
+        category: "Processual",
+        type: "mobile",
+        icon: Mail,
+        version: "1.0.8",
+        size: "28MB"
+    },
+];
+</file>
+
+<file path="src/index.css">
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Mapeamento das cores para as variáveis */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Base */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  /* Card & Popover */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* Primary - TJBA Blue (#408ADC) */
+  --primary: oklch(0.61 0.17 254);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary - Um tom muito sutil de azul-cinza para harmonizar */
+  --secondary: oklch(0.25 0.1 260);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  /* Muted & Accent */
+  --muted: oklch(0.97 0.01 254);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.96 0.01 254);
+  --accent-foreground: oklch(0.205 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Borders & Inputs */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+
+  /* Ring - Foco com a cor da marca */
+  --ring: oklch(0.61 0.17 254 / 0.5);
+
+  /* Charts - Usando o azul como principal */
+  --chart-1: oklch(0.61 0.17 254);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.61 0.17 254);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0.01 254);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.61 0.17 254 / 0.5);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  /* Primary - Mantemos o azul da marca no dark mode pois tem bom brilho */
+  --primary: oklch(0.61 0.17 254);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+
+  --chart-1: oklch(0.61 0.17 254);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.61 0.17 254);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
+  }
+
+  * {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+</file>
+
+<file path="src/lib/utils.ts">
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+</file>
+
+<file path="src/main.tsx">
+import {createRoot} from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+    <App/>
+)
+</file>
+
+<file path="tsconfig.app.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": ["src"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
+}
+</file>
+
+<file path="tsconfig.node.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="vite.config.ts">
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+</file>
+
+</files>
