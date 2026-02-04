@@ -62,7 +62,7 @@ export const solutionsList: SolutionItem[] = [
     },
     {
         id: "5",
-        title: "Inclua o TJzEla",
+        title: "TJzEla",
         description: "Cadastro de medidas protetivas de urgência",
         url: "#",
         category: "Cidadania",
