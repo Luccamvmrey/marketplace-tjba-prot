@@ -1,4 +1,4 @@
-import {Briefcase, type LucideIcon, Mail, MessageCircle, User} from "lucide-react";
+import {Briefcase, type LucideIcon, Mail, MessageCircle, Monitor, ScrollText, User, Zap} from "lucide-react";
 
 export type SolutionType = 'web' | 'mobile';
 
@@ -16,6 +16,34 @@ export interface SolutionItem {
 }
 
 export const solutionsList: SolutionItem[] = [
+    {
+        id: "pje-main",
+        title: "PJe - 1º Grau",
+        description: "Sistema oficial de tramitação de processos judiciais eletrônicos do CNJ.",
+        url: "https://sso.cloud.pje.jus.br/auth/realms/pje/protocol/openid-connect/auth?response_type=code&client_id=pje-tjba-1g&redirect_uri=https%3A%2F%2Fpje.tjba.jus.br%2Fpje%2Flogin.seam&state=40dd6e4b-0894-4573-8742-909f43d7e9a5&login=true&scope=openid",
+        category: "Processual",
+        type: "web",
+        icon: Monitor,
+    },
+    {
+        id: "eproc-main",
+        title: "Eproc",
+        description: "Novo sistema de processo judicial eletrônico, focado em agilidade e usabilidade.",
+        url: "https://www.tjba.jus.br/portaleproc/",
+        category: "Processual",
+        type: "web",
+        icon: Zap,
+    },
+    {
+        id: "projudi-main",
+        title: "PROJUDI",
+        description: "Sistema de Processo Judicial Digital utilizado nos Juizados Especiais.",
+        url: "https://projudi.tjba.jus.br/projudi/",
+        category: "Juizados",
+        type: "web",
+        icon: ScrollText,
+    },
+
     {
         id: "1",
         title: "Queixa Cidadã",
